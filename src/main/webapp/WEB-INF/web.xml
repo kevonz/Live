@@ -1,0 +1,29 @@
+<web-app version="2.4"
+	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+	<display-name>Spring MVC Application</display-name>
+
+    <servlet>
+		<servlet-name>mvc-dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>mvc-dispatcher</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+    <!-- servlet 'disuz_uc_api' 用于接收Discuz UCenter的同步消息， 此项配置必须有。（可适当调整 load-on-startup参数） -->
+    <servlet>
+        <servlet-name>disuz_uc_api</servlet-name>
+        <servlet-class>com.fivestars.interfaces.bbs.api.UC</servlet-class>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>disuz_uc_api</servlet-name>
+        <url-pattern>/api/uc.php</url-pattern>
+    </servlet-mapping>
+</web-app>
